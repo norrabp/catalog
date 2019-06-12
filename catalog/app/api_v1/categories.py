@@ -22,7 +22,7 @@ def new_category():
     db.session.add(category)
     db.session.commit()
     category_schema = CategorySchema()
-    return jsonify({}), 201, category_schema.dump(category).data
+    return jsonify(category_schema.dump(category).data), 201, category_schema.dump(category).data
 
 # Get a category
 @api.route('/categories/<int:id>', methods=['GET'])

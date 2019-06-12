@@ -11,7 +11,9 @@ from ..schemas import CategorySchema, ItemSchema
 def get_category_items(id):
     category = Category.query.get_or_404(id)
     category_schema = CategorySchema()
-    return jsonify({category.name + ' items': category_schema.dump(category).data['items']})
+    items = Item.query.filter_by(cat_id=id).all()
+    item_schema = ItemSchema(many=True)
+    return jsonify({category.name + ' items': item_schema.dump(items).data})
 
 # Get all items
 @api.route('/items', methods=['GET'])
@@ -39,7 +41,7 @@ def new_item(id):
     db.session.add(item)
     db.session.commit()
     item_schema = ItemSchema()
-    return jsonify({}), 201, item_schema.dump(item).data
+    return jsonify(item_schema.dump(item).data), 201, item_schema.dump(item).data
 
 # Edit an item
 @api.route('/items/<int:id>', methods=['PUT'])
