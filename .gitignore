@@ -1,1 +1,3 @@
-catalog/config/*.py
+catalog/config/development.py
+catalog/config/testing.py
+catalog/config/production.py
