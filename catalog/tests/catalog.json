@@ -1,0 +1,58 @@
+{
+  "Category": [
+    {
+      "id": 1,
+      "name": "Soccer",
+      "Item": [
+        {
+          "cat_id": 1,
+          "description": "The shoes",
+          "id": 1,
+          "title": "Soccer Cleats"
+        },
+        {
+          "cat_id": 1,
+          "description": "The shirt",
+          "id": 2,
+          "title": "Jersey"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Basketball"
+    },
+    {
+      "id": 3,
+      "name": "Baseball",
+      "Item": [
+        {
+          "cat_id": 3,
+          "description": "The batter uses this to hit the baseball",
+          "id": 3,
+          "title": "Bat"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Frisbee"
+    },
+    {
+      "id": 5,
+      "name": "Snowboarding",
+      "Item": [
+        {
+          "cat_id": 5,
+          "description": "Best for any terrain and conditions. All-mountain snowboards perform anywhere on a mountain",
+          "id": 7,
+          "title": "Snowboard"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Rock Climbing"
+    }
+  ]
+}
