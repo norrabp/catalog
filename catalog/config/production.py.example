@@ -1,0 +1,3 @@
+DEBUG = False
+SECRET_KEY = 'top-secret!'
+SQLALCHEMY_DATABASE_URI = <Your MySQL database URI goes here>
