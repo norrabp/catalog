@@ -25,11 +25,10 @@ def create_app(config_name):
     app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
     # authentication token route
-    '''
     from .auth import auth
     @app.route('/get-auth-token')
     @auth.login_required
     def get_auth_token():
         return jsonify({'token': g.user.generate_auth_token()})
-    '''
+
     return app
