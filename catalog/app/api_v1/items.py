@@ -38,10 +38,12 @@ def new_item(id):
     data = request.json
     data['category'] = id
     item.import_data(data)
+    item_schema = ItemSchema()
+    item_data = item_schema.dump(item).data
     db.session.add(item)
     db.session.commit()
-    item_schema = ItemSchema()
-    return jsonify(item_schema.dump(item).data), 201, item_schema.dump(item).data
+    item_data['id'] = item.id
+    return jsonify(item_data), 201
 
 # Edit an item
 @api.route('/items/<int:id>', methods=['PUT'])
@@ -56,10 +58,11 @@ def edit_item(id):
     if 'description' not in data:
         data['description'] = item.description
     item.import_data(data)
+    item_schema = ItemSchema()
+    item_data = item_schema.dump(item).data
     db.session.add(item)
     db.session.commit()
-    item_schema = ItemSchema()
-    return jsonify(item_schema.dump(item).data)
+    return jsonify(item_data)
 
 # Delete an item
 @api.route('/items/<int:id>', methods=['DELETE'])

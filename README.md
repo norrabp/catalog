@@ -62,6 +62,7 @@ export FLASK_CONFIG=development
 ## Project Structure
 
 The repository should look like this:
+```
 .
 ├── README.md
 ├── catalog
@@ -88,7 +89,7 @@ The repository should look like this:
 │       ├── test_client.py
 │       ├── tests.py
 └── requirements.txt
-
+```
 The website is designed around Categories, which are containers for Items
 
 `models.py` contains the SQLAlchemy database models and 
@@ -114,7 +115,7 @@ To run the application normally, type in
 python run.py
 ```
 
-`run.py` will configure a user `GotIt` with password `GotItAI` from which you can obtain your token from
+`run.py` will configure a user `Admin` with password `Cookie stop snoring` from which you have admin privileges
 
 To run the tests, run
 ```
@@ -152,31 +153,35 @@ http --auth <YOUR TOKEN HERE> <Method> http://localhost:5000/<rest of URL> <head
     - Command: `http GET http://localhost:5000/api/v1/categories`
     - Returns:
         - Status Code: `200`
-        - Data: {
-                    "categories": [
-                        {
-                            "id": <id>,
-                            "name": <category name>
-                            "items": [
-                                <item id>
-                            ]
-                        }
+        - Data: 
+        ```
+        {
+            "categories": [
+                {
+                    "id": <id>,
+                    "name": <category name>
+                    "items": [
+                        <item id>
                     ]
                 }
+            ]
+        }
+        ```
 
 - Get a specific category
     - Command: `http GET http://localhost:5000/api/v1/categories/<id>`
     - Returns:
         - Status Code: `200`
-        - Data: {
-                    "id": <id>,
-                    "name": <category name>
-                    "items": [
-                        {
-                            <item id>
-                        }
-                    ]
-                }
+        - Data: 
+        ```
+        {
+            "id": <id>,
+            "name": <category name>
+            "items": [
+                <item id>
+            ]
+        }
+        ```
 
 ##### Create
 
@@ -184,11 +189,14 @@ http --auth <YOUR TOKEN HERE> <Method> http://localhost:5000/<rest of URL> <head
     - Command: `http --auth <your token>: POST http://localhost:5000/api/v1/categories name=<category name>`
     - Returns:
         - Status Code: `201`
-        - Data: {
-                    "id: <id>
-                    "name": <category name>
-                    "items": []
-                }
+        - Data: 
+        ```
+            {
+                "id: <id>,
+                "name": <category name>
+                "items": []
+            }
+        ```
 
 ##### Edit
 
@@ -196,13 +204,16 @@ http --auth <YOUR TOKEN HERE> <Method> http://localhost:5000/<rest of URL> <head
     - Command: `http --auth <your token>: PUT http://localhost:5000/api/v1/categories/<id> name=<new category name>`
     - Returns:
         - Status Code: `200`
-        - Data: {
-                    "id": <id>,
-                    "items": [
-                        <item id>
-                    ],
-                    "name": <category name>
-                }
+        - Data: 
+        ```
+        {
+            "id": <id>,
+            "items": [
+                <item id>
+            ],
+            "name": <category name>
+        }
+        ```
 
 ##### Delete
 
@@ -219,42 +230,51 @@ http --auth <YOUR TOKEN HERE> <Method> http://localhost:5000/<rest of URL> <head
     - Command: `http GET http://localhost:5000/api/v1/categories/<id>/items`
     - Returns:
         - Status Code: `200`
-        - Data: {
-                    "<category name> items": [
-                        {
-                            "id": <item id>
-                            "title": <item title>
-                            "description": <item description>
-                            "category": <category id>
-                        }
-                    ]
-                }
-
-- Get all Items
-    - Command: `http GET http://localhost:5000/api/v1/items`
-    - Returns:
-        - Status Code: `200`
-        - Data: {
-                    "Items": [
-                        {
-                            "id": <item id>
-                            "title": <item title>
-                            "description": <item description>
-                            "category": <category id> 
-                        }
-                    ]
-                }
-
-- Get a specific Item
-    - Command: `http GET http://localhost:5000/api/v1/items/<id>`
-    - Returns:
-        - Status Code: `200`
-        - Data: {
+        - Data: 
+        ```
+        {
+            "<category name> items": [
+                {
                     "id": <item id>
                     "title": <item title>
                     "description": <item description>
                     "category": <category id>
                 }
+            ]
+        }
+        ```
+
+- Get all Items
+    - Command: `http GET http://localhost:5000/api/v1/items`
+    - Returns:
+        - Status Code: `200`
+        - Data: 
+        ```
+        {
+            "Items": [
+                {
+                    "id": <item id>
+                    "title": <item title>
+                    "description": <item description>
+                    "category": <category id> 
+                }
+            ]
+        }
+        ```
+
+- Get a specific Item
+    - Command: `http GET http://localhost:5000/api/v1/items/<id>`
+    - Returns:
+        - Status Code: `200`
+        - Data: 
+        ```
+        {
+            "id": <item id>
+            "title": <item title>
+            "description": <item description>
+            "category": <category id>
+        }
+        ```
 
 ##### Create
 
@@ -262,12 +282,15 @@ http --auth <YOUR TOKEN HERE> <Method> http://localhost:5000/<rest of URL> <head
     - Command: `http --auth <your token>: POST http://localhost:5000/api/v1/categories/<category id>/items title=<item title> description=<item description>`
     - Returns:
         - Status Code: `201`
-        - Data: {
-                    "id": <item id>
-                    "title": <item title>
-                    "description": <item description>
-                    "category": <category id>
-                }
+        - Data: 
+        ```
+        {
+            "id": <item id>
+            "title": <item title>
+            "description": <item description>
+            "category": <category id>
+        }
+        ```
 
 ##### Edit
 
@@ -277,12 +300,15 @@ NOTE: This api is designed so that you are allowed to edit between 0 and 3 attri
     - Command: `http --auth <your token>: PUT http://localhost:5000/api/v1/items/<id> title=<new title> description=<new description> category=<new category id>`
     - Returns:
         - Status Code: `200`
-        - Data: {
-                    "id": <item id>
-                    "title": <item title>
-                    "category": <category id>
-                    "description": <item description>
-                }
+        - Data: 
+        ```
+        {
+            "id": <item id>
+            "title": <item title>
+            "category": <category id>
+            "description": <item description>
+        }
+        ```
 
 ##### Delete
 - Delete an Item
@@ -290,4 +316,75 @@ NOTE: This api is designed so that you are allowed to edit between 0 and 3 attri
     - Returns:
         - Status Code: `204`
 
+### Users
 
+##### Getters
+
+- Get all users
+    - Command: `http GET http://localhost:5000/api/v1/users`
+    - Returns:
+        - Status Code: `200`
+        - Data: 
+        ```
+        {
+            "users": [
+                {
+                    "id": <user id>,
+                    "password_hash": <user password hash>,
+                    "username": <username>
+                }
+            ]
+        }
+        ```
+                
+- Get specific users
+    - Command: 'http GET http://localhost:5000/api/v1/users/<id>'
+    - Returns:
+        - Status Code: `200`
+        - Data:
+        ```
+        {
+            "id": <user id>,
+            "password_hash": <user password hash>,
+            "username": <username>
+        }
+        ```
+
+##### Create
+
+- Create a new user
+    - Command: `http POST http://localhost:5000/api/v1/users username=<username> password=<password>`
+    - Returns:
+        - Status Code: `201`
+        - Data:
+        ```
+        {
+            "id": <user id>,
+            "token": <user token>
+        }
+        ```
+
+##### Edit
+
+NOTE: Similar to Items, one can edit one of or both username or password. Instead of using the token, a user will need to enter in their username and password in order to change their account details. Also 'Admin' can edit any account
+
+- Edit a user's information
+    - Command: `http --auth <username>:<password> PUT http://localhost:5000/api/v1/users username<username> password=<password>`
+    - Returns:
+        - Status Code: `200`
+        - Data:
+        ```
+        {
+            "token": <new user token>
+        }
+        ```        
+
+##### Delete
+
+NOTE: As is with PUT requests, DELETE requests also need the user to enter in his username and password or request as 'Admin'
+
+- Delete a user
+    - Command: `http --auth <username>:<password> PUT http://localhost:5000`
+    - Returns:
+        - Status Code: `200`
+        

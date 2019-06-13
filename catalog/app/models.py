@@ -44,7 +44,7 @@ class Category(db.Model):
         try:
             self.name = data['name']
         except KeyError as e:
-            raise ValidationError('Invalid customer: missing ' + e.args[0])
+            raise ValidationError('Invalid category: missing ' + e.args[0])
         return self
 
 
@@ -63,5 +63,5 @@ class Item(db.Model):
             self.description = data['description']
             self.cat_id = data['category']
         except KeyError as e:
-            raise ValidationError('Invalid order: missing ' + e.args[0])
+            raise ValidationError('Invalid item: missing ' + e.args[0])
         return self

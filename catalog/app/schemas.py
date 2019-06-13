@@ -1,10 +1,12 @@
 from . import ma
 from .models import Category, Item, User
 
+
 # User Marshmallow schema
 class UserSchema(ma.ModelSchema):
     class Meta:
         model = User
+
 
 # Category Marshmallow schema
 class CategorySchema(ma.ModelSchema):

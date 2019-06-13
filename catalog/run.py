@@ -8,8 +8,8 @@ if __name__ == '__main__':
         db.create_all()
         # create a development user
         if User.query.get(1) is None:
-            u = User(username='GotIt')
-            u.set_password('GotItAI')
+            u = User(username='Admin')
+            u.set_password('Cookie stop snoring')
             db.session.add(u)
             db.session.commit()
     app.run()

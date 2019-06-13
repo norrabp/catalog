@@ -19,18 +19,19 @@ def get_categories_all():
 def new_category():
     category = Category()
     category.import_data(request.json)
+    category_schema = CategorySchema()
+    data = category_schema.dump(category).data
     db.session.add(category)
     db.session.commit()
-    category_schema = CategorySchema()
-    return jsonify(category_schema.dump(category).data), 201, category_schema.dump(category).data
+    data['id'] = category.id
+    return jsonify(data), 201
 
 # Get a category
 @api.route('/categories/<int:id>', methods=['GET'])
 def get_category(id):
     category = Category.query.get_or_404(id)
     category_schema = CategorySchema()
-    return jsonify(
-        category_schema.dump(category).data)
+    return jsonify(category_schema.dump(category).data)
 
 # Edit a category
 @api.route('/categories/<int:id>', methods=['PUT'])
@@ -38,10 +39,11 @@ def get_category(id):
 def edit_category(id):
     category = Category.query.get_or_404(id)
     category.import_data(request.json)
+    category_schema = CategorySchema()
+    data = category_schema.dump(category).data
     db.session.add(category)
     db.session.commit()
-    category_schema = CategorySchema()
-    return jsonify(category_schema.dump(category).data)
+    return jsonify(data)
 
 # Delete a category
 @api.route('/categories/<int:id>', methods=['DELETE'])
