@@ -44,7 +44,7 @@ httplib2.system-ca-certs-locater==0.1.2
 ipaddress==1.0.22
 itsdangerous==0.24
 jdcal==1.4.1
-Jinja2==2.7.3
+Jinja2==2.11.3
 jmespath==0.9.4
 jsonschema==3.0.1
 kombu==4.6.0
