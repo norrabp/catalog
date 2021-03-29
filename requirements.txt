@@ -72,7 +72,7 @@ pyasn1-modules==0.2.5
 pycparser==2.19
 pycrypto==2.6.1
 PyDispatcher==2.0.5
-Pygments==1.6
+Pygments==2.7.4
 PyJWT==1.4.2
 PyMySQL==0.9.3
 pyOpenSSL==19.0.0
