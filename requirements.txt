@@ -91,7 +91,7 @@ pytz==2017.2
 redis==2.10.6
 requests==2.6.0
 requests-oauthlib==1.2.0
-rsa==4.0
+rsa==4.7
 s3transfer==0.1.13
 salesforce-requests-oauthlib==0.1.12
 salesforce-streaming-client==0.1.3
